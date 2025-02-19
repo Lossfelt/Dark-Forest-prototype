@@ -25,7 +25,7 @@ function App() {
     const ctx = canvas.getContext("2d");
 
     // Plasserer disse variablene inni effekten så de kun opprettes én gang:
-    const player = { x: 50, y: canvas.height / 2, power: 2 };
+    const player = { x: 50, y: canvas.height / 2 };
     const target = { x: 750, y: canvas.height / 2, radius: 15 };
 
     // Vind-kolonner genereres én gang
@@ -145,7 +145,7 @@ function App() {
     // Lager en funksjon som skyter prosjektil (den kan også kalles ved "Space"-trykk):
     function shootProjectile() {
       const currentAngle = angleRef.current;
-      const speed = 5;
+      const speed = 3;
       const vx = speed * Math.cos((currentAngle * Math.PI) / 180);
       const vy = speed * Math.sin((currentAngle * Math.PI) / 180);
       projectiles.push({ x: player.x, y: player.y, vx, vy });
@@ -192,10 +192,10 @@ function App() {
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === "ArrowUp") {
-        setAngle((prevAngle) => prevAngle - 5);
+        setAngle((prevAngle) => prevAngle - 2);
       }
       if (event.key === "ArrowDown") {
-        setAngle((prevAngle) => prevAngle + 5);
+        setAngle((prevAngle) => prevAngle + 2);
       }
     };
     window.addEventListener("keydown", handleKeyDown);
